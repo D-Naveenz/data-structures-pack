@@ -7,7 +7,7 @@ TERMINAL_WIDTH = console.get_terminal_width()
 def header():
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
           "~~~~~~~~~~~~~~~~~~~~~~~~~~~".center(TERMINAL_WIDTH))
-    print("Directed Graph".center(TERMINAL_WIDTH))
+    print("DSA Practicals - Lab Sheet 00".center(TERMINAL_WIDTH))
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
           "~~~~~~~~~~~~~~~~~~~~~~~~~~".center(TERMINAL_WIDTH))
     print("\n")
