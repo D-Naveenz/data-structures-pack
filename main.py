@@ -1,10 +1,20 @@
+from helpers import console
 from structures import DirectedGraph, Edge
+
+TERMINAL_WIDTH = console.get_terminal_width()
+
+
+def header():
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+          "~~~~~~~~~~~~~~~~~~~~~~~~~~~".center(TERMINAL_WIDTH))
+    print("Directed Graph".center(TERMINAL_WIDTH))
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+          "~~~~~~~~~~~~~~~~~~~~~~~~~~".center(TERMINAL_WIDTH))
+    print("\n")
 
 
 def run():
-    # here 240 spaces are reserved for the particular output string. And the string is printed in the middle
-    print(f"{'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Directed Graph ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~' : ^120}")
-    print("\n")
+    header()
 
 
 if __name__ == '__main__':
