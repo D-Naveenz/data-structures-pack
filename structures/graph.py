@@ -18,7 +18,7 @@ class GraphController(DSAObj):
 
     def __init__(self, i_str: list[Edge] | str = None):
         super().__init__()
-        self._edges_count = 0
+        self.__edge_count = 0
         self._data_type = "adjacency_list"
         self._data = {}
 
@@ -30,11 +30,19 @@ class GraphController(DSAObj):
                     self.add_edge(item.l_vertex, item.r_vertex, item.weight)
 
     def __int__(self):
-        return self._edges_count
+        return self.__edge_count
 
     @property
-    def vertices_count(self):
+    def edge_count(self):
+        return self.__edge_count
+
+    @property
+    def vertex_count(self):
         return len(self._data)
+
+    @property
+    def adjacency_list(self):
+        return self._data
 
     # Public functions
     def deserialize(self, i_stream: str):
@@ -68,7 +76,7 @@ class GraphController(DSAObj):
 
         # append the edge to the relevant place
         self._data[l_vrt].append({"adjacent": r_vrt, "weight": weight})
-        self._edges_count += 1
+        self.__edge_count += 1
 
     @abstractmethod
     def remove_edge(self, l_vrt, r_vrt):
@@ -82,6 +90,18 @@ class GraphController(DSAObj):
     def trace_cycles(self, vertex: str):
         return self.__pathfinder(vertex, vertex)
 
+    def is_universal_sink(self, vertex):
+        # checking there are adjacent vertices from the given vertex
+        if len(self._data.get(vertex)) is 0:
+            count = 0
+            for adj_list in self.adjacency_list.values():
+                for adj in adj_list:
+                    if adj.get("adjacent") is vertex:
+                        count += 1
+                        break
+            if count == self.vertex_count - 1:
+                return True
+        return False
     # Public functions
 
     # Private functions
@@ -130,7 +150,7 @@ class DirectedGraph(GraphController):
         for edge in self._data[l_vrt]:
             if edge["adjacent"] == r_vrt:
                 self._data[l_vrt].remove(edge)
-                self._edges_count -= 1
+                self.__edge_count -= 1
 
 
 class UndirectedGraph(GraphController):
@@ -152,4 +172,4 @@ class UndirectedGraph(GraphController):
         for edge in self._data[r_vrt]:
             if edge["adjacent"] == l_vrt:
                 self._data[r_vrt].remove(edge)
-                self._edges_count -= 1
+                self.__edge_count -= 1
