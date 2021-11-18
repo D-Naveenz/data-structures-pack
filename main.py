@@ -12,10 +12,12 @@ def header():
     print("DSA Practicals - Lab Sheet 03".center(TERMINAL_WIDTH))
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
           "~~~~~~~~~~~~~~~~~~~~~~~~~~".center(TERMINAL_WIDTH))
-    print("\n")
+    print()
 
 
 def question_1():
+    print("### Question 1 ###")
+
     graph = DirectedGraph([
         Edge("V1", "V2"), Edge("V1", "V3"), Edge("V1", "V6"),
         Edge("V2", "V3"), Edge("V2", "V4"),
@@ -43,10 +45,21 @@ def question_1():
     else:
         print(f"are {count} universal sinks in this graph")
 
+    print("### Question 1 ###\n")
+    print()
+
+
+def question_2():
+    print("### Question 2 ###")
+
+    print("### Question 2 ###")
+    print()
+
 
 def run():
     header()
     question_1()
+    question_2()
 
 
 if __name__ == '__main__':
