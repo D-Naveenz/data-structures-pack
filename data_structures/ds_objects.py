@@ -1,13 +1,13 @@
-from abc import ABC, abstractmethod
 import json
+from abc import ABC, abstractmethod
 
-STRUCTURE_VERSION = 1.0
+from data_structures.cofig import *
 
 
 class DSAObj(ABC):
     def __init__(self):
         self.__ds_modal = self.__class__.__name__  # retrieve the name of the class of the instance self.
-        self.__version = STRUCTURE_VERSION
+        self.__version = VERSION
         self._data_type = None
         self._data = None
 
