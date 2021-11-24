@@ -85,38 +85,37 @@ class GraphController(DSAObj):
     def remove_edge(self, l_vrt, r_vrt):
         pass
 
-    def trace_paths(self, start, end) -> list[list] | None:
+    def trace_paths(self, start, end):
         # If start or end vertex doesn't exists
         if self._data.get(start) is None and self._data.get(end) is None and start == end:
             raise IOError("Invalid input")
 
-        # Mark all the vertices as not visited
-        visited = {}
-        for vertex in self._data.keys():
-            visited[vertex] = False
+        return self.__trace_util(start, end, True)
 
-        # Create an array to store paths
-        paths = []
-
-        self.__path_finder_util(
-            start,
-            end,
-            visited=visited,
-            paths=paths,
-            current=[],
-            recursion=-1
-        )
-
-        if paths is [[]]:
-            return None
-        else:
-            return paths
-
-    def trace_cycles(self, vertex) -> list[list] | None:
-        # If start or end vertex doesn't exists
+    def trace_cycles(self, vertex):
+        # If the vertex doesn't exists
         if self._data.get(vertex) is None:
             raise IOError("Invalid input")
 
+        return self.__trace_util(vertex, vertex, True)
+
+    def trace_trails(self, start, end):
+        # If start or end vertex doesn't exists
+        if self._data.get(start) is None and self._data.get(end) is None and start == end:
+            raise IOError("Invalid input")
+
+        return self.__trace_util(start, end, False)
+
+    def trace_circuit(self, vertex):
+        # If the vertex doesn't exists
+        if self._data.get(vertex) is None:
+            raise IOError("Invalid input")
+
+        return self.__trace_util(vertex, vertex, False)
+    # Public functions
+
+    # Private functions
+    def __trace_util(self, start, end, is_path) -> list[list] | None:
         # Mark all the vertices as not visited
         visited = {}
         for vertex in self._data.keys():
@@ -125,23 +124,32 @@ class GraphController(DSAObj):
         # Create an array to store paths
         paths = []
 
-        self.__path_finder_util(
-            vertex,
-            vertex,
-            visited=visited,
-            paths=paths,
-            current=[],
-            recursion=-1
-        )
+        if is_path:
+            self.__path_finder(
+                start,
+                end,
+                visited=visited,
+                current=[],
+                paths=paths,
+                recursion=-1,
+            )
+        else:
+            self.__trail_finder(
+                start,
+                end,
+                visited=visited,
+                current=[],
+                paths=paths,
+                recursion=-1,
+                streak=0
+            )
 
         if paths is [[]]:
             return None
         else:
             return paths
-    # Public functions
 
-    # Private functions
-    def __path_finder_util(self, start, end, **kwargs):
+    def __path_finder(self, start, end, **kwargs):
         # Mark the current node as visited and store in path
         kwargs["visited"][start] = True
         kwargs["current"].append(start)
@@ -154,9 +162,35 @@ class GraphController(DSAObj):
         else:
             # recursive steps
             for edge in self._data.get(start):
-                # If the current (start) node already belongs to the path as a milestone
+                # If the current (start) vertex already belongs to the path as a milestone
                 if kwargs["visited"][edge["adjacent"]] is False:
-                    self.__path_finder_util(edge["adjacent"], end, **kwargs)
+                    self.__path_finder(edge["adjacent"], end, **kwargs)
+
+        # Remove current vertex from path[] and mark it as unvisited
+        kwargs["current"].pop()
+        kwargs["visited"][start] = False
+
+    def __trail_finder(self, start, end, **kwargs):
+        # Mark the current node as visited and store in path
+        kwargs["visited"][start] = True
+        kwargs["current"].append(start)
+        kwargs["recursion"] += 1
+
+        # base case 1
+        # If its not the first iteration and both start and end vertices are the same
+        if start == end and kwargs["recursion"] > 0:
+            kwargs["paths"].append(list(kwargs["current"]))
+        else:
+            # recursive steps
+            for edge in self._data.get(start):
+                # If the current (start) vertex already belongs to the path as a milestone
+                if kwargs["visited"][edge["adjacent"]] is True:
+                    kwargs["streak"] += 1
+                else:
+                    kwargs["streak"] = 0
+                # If not crossing an edge
+                if kwargs["streak"] <= 1:
+                    self.__path_finder(edge["adjacent"], end, **kwargs)
 
         # Remove current vertex from path[] and mark it as unvisited
         kwargs["current"].pop()
