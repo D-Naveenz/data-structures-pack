@@ -1,0 +1,12 @@
+{
+  "pkg_info": {
+    "version": "0.1.1",
+    "url": "https://github.com/D-Naveenz/data-structures-pack",
+    "author": "Naveen Dharmathunga",
+    "author_email": "dnd.pro@outlook.com",
+    "description": "Data structures package that commonly using in programming"
+  },
+  "struct_config": {
+    "description": "A data structure implemented on 'data structures' python package"
+  }
+}

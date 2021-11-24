@@ -1,15 +1,17 @@
 import json
 from abc import ABC, abstractmethod
 
-from data_structures.cofig import *
+with open("data_structures\\config.json", "r") as info:
+    config: dict = json.load(info)
 
 
 class DSAObj(ABC):
     def __init__(self):
         self.__ds_modal = self.__class__.__name__  # retrieve the name of the class of the instance self.
-        self.__version = VERSION
+        self.__version = config["pkg_info"]["version"]
         self._data_type = None
         self._data = None
+        self.description = config["struct_config"]["description"]
 
     @abstractmethod
     def __int__(self):
@@ -32,6 +34,7 @@ class DSAObj(ABC):
         struct = {
             "ds_modal": self.__ds_modal,
             "version": self.__version,
+            "description": self.description,
             self._data_type: self._data,
         }
         return struct
