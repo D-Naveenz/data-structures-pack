@@ -1,5 +1,5 @@
 import unittest
-from structures import DirectedGraph, Edge
+from data_structures.stack import DirectedGraph, Edge
 
 
 class DirectedGraphTest(unittest.TestCase):
@@ -31,28 +31,34 @@ class DirectedGraphTest(unittest.TestCase):
 
     def test_path_count_accuracy(self):
         # there is only one path from V3 to V1
-        count = self.graph.trace_paths("V3", "V1")
+        paths = self.graph.trace_paths("V3", "V1")
+        count = len(paths)
         self.assertEqual(count, 1)
         print('\nThere', end=' ')
         if count == 0:
             print("is not any path between V3 and v1")
         elif count == 1:
             print("is one path between V3 and v1")
+            print(paths)
         else:
             print(f"are {count} paths between V3 and v1")
+            print(paths)
 
     def test_cycle_count_accuracy(self):
         # there is not any cycle from V1
         # print("There is " + ("" if graph.trace_cycles("V1") else "not") + "a cycle from V1")
-        count = self.graph.trace_cycles("V1")
+        cycles = self.graph.trace_cycles("V1")
+        count = len(cycles)
         self.assertEqual(count, 0)
         print('\nThere', end=' ')
         if count == 0:
             print("is not any cycle from v1")
         elif count == 1:
             print("is one cycle from v1")
+            print(cycles)
         else:
             print(f"are {count} cycles from v1")
+            print(cycles)
 
 
 if __name__ == '__main__':
