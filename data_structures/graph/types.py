@@ -1,4 +1,4 @@
-from structures.graph.core import GraphController, Edge
+from data_structures.graph import GraphController, Edge
 
 
 class DirectedGraph(GraphController):

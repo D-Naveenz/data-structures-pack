@@ -1,4 +1,4 @@
-from structures import DSAObj
+from data_structures import DSAObj
 
 
 class Stack(DSAObj):

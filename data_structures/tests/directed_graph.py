@@ -1,5 +1,5 @@
 import unittest
-from structures import DirectedGraph, Edge
+from data_structures.stack import DirectedGraph, Edge
 
 
 class DirectedGraphTest(unittest.TestCase):

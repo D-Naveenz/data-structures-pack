@@ -1,7 +1,7 @@
-# Gthub: https://github.com/D-Naveenz/data-structures-pack
+# This is a dummy main file for test the project
 
 from helpers import console
-from structures import DirectedGraph, Edge
+from data_structures.graph import DirectedGraph, Edge
 
 TERMINAL_WIDTH = console.get_terminal_width()
 

@@ -2,7 +2,7 @@ import json
 from abc import abstractmethod
 from typing import Any
 
-from structures.ds_objects import DSAObj
+from data_structures.ds_objects import DSAObj
 
 
 class Edge:
