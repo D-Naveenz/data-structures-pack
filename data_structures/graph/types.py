@@ -1,11 +1,11 @@
-from typing import Union, Optional
+from typing import Optional
 
 from data_structures.graph import GraphController, Edge
 
 
 class DirectedGraph(GraphController):
 
-    def __init__(self, i_str: Optional[Union[list[Edge], str]] = None):
+    def __init__(self, i_str: Optional[list[Edge]] = None):
         super().__init__(i_str)
 
     def is_universal_sink(self, vertex):
@@ -24,7 +24,7 @@ class DirectedGraph(GraphController):
 
 class UndirectedGraph(GraphController):
 
-    def __init__(self, i_str: Optional[Union[list[Edge], str]] = None):
+    def __init__(self, i_str: Optional[list[Edge]] = None):
         super().__init__(i_str)
 
     def add_edge(self, l_vrt, r_vrt, weight):
@@ -40,4 +40,3 @@ class UndirectedGraph(GraphController):
         for edge in self._data[r_vrt]:
             if edge["adjacent"] == l_vrt:
                 self._data[r_vrt].remove(edge)
-

@@ -40,12 +40,14 @@ class DSAObj(ABC):
         }
         return struct
 
+    @classmethod
     @abstractmethod
-    def deserialize(self, i_stream: str):
+    def deserialize(cls, i_stream: str):
         struct: dict = json.loads(i_stream)
         modal = struct["ds_modal"]
         version = struct["version"]
-        if modal != self._ds_modal:
-            raise TypeError(f"Invalid data structure type: {modal} is not compatible with {self._ds_modal}")
-        if version != self.__version:
-            raise TypeError(f"Structure version '{modal}' is not compatible with '{self._ds_modal}'")
+        if modal != cls._ds_modal:
+            if modal[:len(cls._ds_modal)] != cls._ds_modal:
+                raise TypeError(f"Invalid data structure type: {modal} is not compatible with {cls._ds_modal}")
+        if version != cls.__version:
+            raise TypeError(f"Structure version '{modal}' is not compatible with '{cls._ds_modal}'")

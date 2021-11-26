@@ -1,5 +1,5 @@
 import json
-from typing import Any, Optional, Union
+from typing import Any, Optional
 
 from data_structures.ds_objects import DSAObj
 
@@ -18,17 +18,14 @@ class GraphController(DSAObj):
     _data_type = "adjacency_list"
     _data: dict[Any, list[dict]]
 
-    def __init__(self, i_str: Optional[Union[list[Edge], str]] = None):
+    def __init__(self, i_str: Optional[list[Edge]] = None):
         super().__init__()
         self.__edge_count = 0
         self._data = {}
 
         if i_str is not None:
-            if isinstance(i_str, str):
-                self.deserialize(i_str)
-            else:
-                for item in i_str:
-                    self.add_edge(item.l_vertex, item.r_vertex, item.weight)
+            for item in i_str:
+                self.add_edge(item.l_vertex, item.r_vertex, item.weight)
 
     @property
     def edge_count(self):
@@ -46,10 +43,14 @@ class GraphController(DSAObj):
         return self.edge_count
 
     # Public functions
-    def deserialize(self, i_stream: str):
+    @classmethod
+    def deserialize(cls, i_stream: str):
         super().deserialize(i_stream)
         struct: dict = json.loads(i_stream)
-        self._data = struct[self._data_type]
+
+        new = cls()
+        new._data = struct[cls._data_type]
+        return new
 
     def add_vertex(self, name):
         if name not in self._data:

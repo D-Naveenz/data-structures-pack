@@ -15,25 +15,26 @@ class Stack(Generic[T], DSAObj):
         self._data = []
 
     @property
-    def __top(self):
+    def top(self):
         return len(self._data) - 1
 
     @property
     def is_empty(self):
-        return self.__top == -1
+        return self.top == -1
 
     @property
     def is_full(self):
-        return self.__top == self.__length - 1
+        return self.top == self.__length - 1
 
     def __len__(self):
-        return self.__top + 1
+        return self.top + 1
 
-    def generic_type(self):
-        return "[" + self.__orig_class__.__args__[0].__name__ + "]"
+    def __dict__(self):
+        return self.serialize()
 
-    def deserialize(self, i_stream: str):
-        pass
+    @classmethod
+    def deserialize(cls, i_stream: str):
+        super().deserialize(i_stream)
 
     def push(self, data: T):
         if not self.is_full:

@@ -1,6 +1,15 @@
+import json
 from typing import get_args, TypeVar
 
 T = TypeVar("T")
+
+
+def gettype(name: str):
+    """it looks into builtin types only"""
+    t = getattr(__builtins__, name)
+    if isinstance(t, type):
+        return t
+    raise ValueError(name)
 
 
 def generic_class(cls):
@@ -17,12 +26,9 @@ def generic_class(cls):
     orig_bases = cls.__orig_bases__
     generic_type = orig_bases[0]
 
-    class GenericClass(cls, generic_type):
+    class GenericDS(cls, generic_type):
         __generic_type__ = type
         _ds_modal = cls.__name__
-
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, *kwargs)
 
         def __setattr__(self, name, value):
             object.__setattr__(self, name, value)
@@ -30,5 +36,19 @@ def generic_class(cls):
                 self.__generic_type__ = get_args(self.__orig_class__)[0]
                 self._ds_modal += '[' + get_args(self.__orig_class__)[0].__name__ + ']'
 
-    GenericClass.__orig_bases__ = orig_bases
-    return GenericClass
+        def __dict__(self):
+            return self.serialize()
+
+        @classmethod
+        def deserialize(cls, i_stream: str):
+            super().deserialize(i_stream)
+            struct: dict = json.loads(i_stream)
+            # gen_type = re.findall(r'(?<=\[)[a-zA-Z]+', struct["ds_modal"])
+            # gen_type = gettype(gen_type[0])
+            new = cls()
+            new._ds_modal = struct["ds_modal"]
+            new._data = struct[cls._data_type]
+            return new
+
+    GenericDS.__orig_bases__ = orig_bases
+    return GenericDS
