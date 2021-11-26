@@ -1,5 +1,8 @@
+import json
 from setuptools import setup
-from data_structures.cofig import *
+
+with open("data_structures/config.json", "r") as info:
+    config: dict = json.load(info)
 
 try:
     import pypandoc
@@ -9,12 +12,8 @@ except(IOError, ImportError):
 
 setup(
     name='data_structures',
-    version=VERSION,
     packages=['data_structures', 'data_structures.graph', 'data_structures.stack'],
-    url='https://github.com/D-Naveenz/data-structures-pack',
     license='LICENSE.md',
-    author='Naveen Dharmathunga',
-    author_email='dnd.pro@outlook.com',
-    description='Data structures package that commonly using in programming',
+    **config["pkg_info"],
     long_description=long_description
 )

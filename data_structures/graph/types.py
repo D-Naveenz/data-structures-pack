@@ -1,16 +1,12 @@
+from typing import Optional
+
 from data_structures.graph import GraphController, Edge
 
 
 class DirectedGraph(GraphController):
 
-    def __init__(self, i_str: list[Edge] | str = None):
+    def __init__(self, i_str: Optional[list[Edge]] = None):
         super().__init__(i_str)
-
-    def remove_edge(self, l_vrt, r_vrt):
-        for edge in self._data[l_vrt]:
-            if edge["adjacent"] == r_vrt:
-                self._data[l_vrt].remove(edge)
-                self.__edge_count -= 1
 
     def is_universal_sink(self, vertex):
         # checking there are adjacent vertices from the given vertex
@@ -28,7 +24,7 @@ class DirectedGraph(GraphController):
 
 class UndirectedGraph(GraphController):
 
-    def __init__(self, i_str: list[Edge] | str = None):
+    def __init__(self, i_str: Optional[list[Edge]] = None):
         super().__init__(i_str)
 
     def add_edge(self, l_vrt, r_vrt, weight):
@@ -38,12 +34,9 @@ class UndirectedGraph(GraphController):
         self._data[r_vrt].append({"adjacent": l_vrt, "weight": weight})
 
     def remove_edge(self, l_vrt, r_vrt):
-        for edge in self._data[l_vrt]:
-            if edge["adjacent"] == r_vrt:
-                self._data[l_vrt].remove(edge)
-
+        # Call base function
+        super().remove_edge(l_vrt, r_vrt)
+        # Both verticals should be removed
         for edge in self._data[r_vrt]:
             if edge["adjacent"] == l_vrt:
                 self._data[r_vrt].remove(edge)
-                self.__edge_count -= 1
-
