@@ -18,7 +18,7 @@ class CommonGraphTestCase(unittest.TestCase):
 
     def test_edge_count(self):
         # there are 7 edges in the graph. testing it
-        count = int(self.graph)
+        count = len(self.graph)
         self.assertEqual(count, 7)
 
     def test_deserialization(self):

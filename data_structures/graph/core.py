@@ -1,6 +1,5 @@
 import json
-from abc import abstractmethod
-from typing import Any
+from typing import Any, Optional, Union
 
 from data_structures.ds_objects import DSAObj
 
@@ -16,12 +15,12 @@ class Edge:
 
 
 class GraphController(DSAObj):
+    _data_type = "adjacency_list"
     _data: dict[Any, list[dict]]
 
-    def __init__(self, i_str: list[Edge] | str = None):
+    def __init__(self, i_str: Optional[Union[list[Edge], str]] = None):
         super().__init__()
         self.__edge_count = 0
-        self._data_type = "adjacency_list"
         self._data = {}
 
         if i_str is not None:
@@ -43,7 +42,7 @@ class GraphController(DSAObj):
     def adjacency_list(self):
         return self._data
 
-    def __int__(self):
+    def __len__(self):
         return self.edge_count
 
     # Public functions
@@ -81,9 +80,11 @@ class GraphController(DSAObj):
         self._data[l_vrt].append({"adjacent": r_vrt, "weight": weight})
         self.__edge_count += 1
 
-    @abstractmethod
     def remove_edge(self, l_vrt, r_vrt):
-        pass
+        for edge in self._data[l_vrt]:
+            if edge["adjacent"] == r_vrt:
+                self._data[l_vrt].remove(edge)
+                self.__edge_count -= 1
 
     def trace_paths(self, start, end):
         # If start or end vertex doesn't exists
@@ -112,17 +113,18 @@ class GraphController(DSAObj):
             raise IOError("Invalid input")
 
         return self.__trace_util(vertex, vertex, False)
+
     # Public functions
 
     # Private functions
-    def __trace_util(self, start, end, is_path) -> list[list] | None:
+    def __trace_util(self, start, end, is_path) -> Optional[list[list]]:
         # Mark all the vertices as not visited
         visited = {}
         for vertex in self._data.keys():
             visited[vertex] = False
 
         # Create an array to store paths
-        paths = []
+        paths: list[list] = []
 
         if is_path:
             self.__path_finder(
