@@ -32,7 +32,7 @@
     <a href="https://github.com/D-Naveenz/data-structures-pack"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/D-Naveenz/data-structures-pack">View Demo</a>
+    <a href="#">View Demo</a>
     ·
     <a href="https://github.com/D-Naveenz/data-structures-pack/issues">Report Bug</a>
     ·
@@ -92,12 +92,9 @@ Use the `BLANK_README.md` to get started.
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [Python](https://www.python.org/)
-* [Pypandoc](https://pypi.org/project/pypandoc/)
-* [Pytest](https://docs.pytest.org/en/6.2.x/)
-* [Mypy](http://mypy-lang.org/)
+The whole package has build using [Python](https://www.python.org/) and no extra dependencies required.
+Unit testing implemented on [Pytest](https://docs.pytest.org/en/6.2.x/) and using [Mypy](http://mypy-lang.org/) as a
+'static-typing' helper.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -106,16 +103,11 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Make sure you have installed [python](https://www.python.org/downloads/) on your machine and using the latest version 
+of 'pip' package manager.
 
 ### Installation
 
@@ -151,13 +143,16 @@ For more examples, please refer to the [Documentation](https://example.com)
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [] Add Additional Templates w/ Examples
-- [] Add "components" document to easily copy & paste sections of the readme
-- [] Multi-language Support
-    - [] Chinese
-    - [] Spanish
+- [x] Create the base class
+- [ ] Add complex data structures
+  - [x] Graph
+  - [ ] Tree
+- [x] Create generic API for implement common structures
+- [ ] Add common data structures
+  - [x] Stack
+  - [ ] Queue
+  - [ ] Linked List
+- [x] Add Unit Test examples
 
 See the [open issues](https://github.com/D-Naveenz/data-structures-pack/issues) for a full list of proposed features (and known issues).
 
@@ -224,13 +219,13 @@ Use this space to list resources you find helpful and would like to give credit 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/D-Naveenz/data-structures-pack.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
+[contributors-url]: https://github.com/D-Naveenz/data-structures-pack/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/D-Naveenz/data-structures-pack.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
+[forks-url]: https://github.com/D-Naveenz/data-structures-pack/network/members
 [stars-shield]: https://img.shields.io/github/stars/D-Naveenz/data-structures-pack.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[stars-url]: https://github.com/D-Naveenz/data-structures-pack/stargazers
 [issues-shield]: https://img.shields.io/github/issues/D-Naveenz/data-structures-pack.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
+[issues-url]: https://github.com/D-Naveenz/data-structures-pack/issues
 [license-shield]: https://img.shields.io/github/license/D-Naveenz/data-structures-pack.svg?style=for-the-badge
 [license-url]: https://github.com/D-Naveenz/data-structures-pack/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
