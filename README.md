@@ -28,14 +28,14 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+<div style="text-align: center">
+  <a href="https://github.com/D-Naveenz/data-structures-pack">
+    <img src="images/logo.png" alt="Logo" width="80" height="80" title="Data Structures Pack Logo">
   </a>
 
-  <h3 align="center">Data Structures Pack</h3>
+  <h3>Data Structures Pack</h3>
 
-  <p align="center">
+  <p>
     A Python package of data structures that commonly using in programming
     <br />
     <a href="https://github.com/D-Naveenz/data-structures-pack"><strong>Explore the docs »</strong></a>
@@ -95,7 +95,7 @@ Of course, no one template will serve all projects since your needs may be diffe
 
 Use the `BLANK_README.md` to get started.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p style="text-align: right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -108,7 +108,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [Pytest](https://docs.pytest.org/en/6.2.x/)
 * [Mypy](http://mypy-lang.org/)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p style="text-align: right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -142,7 +142,7 @@ This is an example of how to list things you need to use the software and how to
    const API_KEY = 'ENTER YOUR API';
    ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p style="text-align: right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -151,9 +151,9 @@ This is an example of how to list things you need to use the software and how to
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-For more examples, please refer to the [Documentation](https://example.com)_
+For more examples, please refer to the [Documentation](https://example.com)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p style="text-align: right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -170,7 +170,7 @@ For more examples, please refer to the [Documentation](https://example.com)_
 
 See the [open issues](https://github.com/D-Naveenz/data-structures-pack/issues) for a full list of proposed features (and known issues).
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p style="text-align: right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -188,7 +188,7 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/YourFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p style="text-align: right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -197,18 +197,18 @@ Don't forget to give the project a star! Thanks again!
 
 Distributed under the AGPL v3.0 License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p style="text-align: right">(<a href="#top">back to top</a>)</p>
 
 
 
 <!-- CONTACT -->
 ## Contact
 
-Naveen Dharmathunga - [https://twitter.com/dharmathunga](https://twitter.com/dharmathunga) - dnd.pro@outlook.com
+Naveen Dharmathunga - [@dharmathunga](https://twitter.com/dharmathunga) - dnd.pro@outlook.com
 
 Project Link: [https://github.com/D-Naveenz/data-structures-pack](https://github.com/D-Naveenz/data-structures-pack)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p style="text-align: right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -226,7 +226,7 @@ Use this space to list resources you find helpful and would like to give credit 
 * [Font Awesome](https://fontawesome.com)
 * [React Icons](https://react-icons.github.io/react-icons/search)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p style="text-align: right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -241,7 +241,7 @@ Use this space to list resources you find helpful and would like to give credit 
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
 [issues-url]: https://github.com/othneildrew/Best-README-Template/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/D-Naveenz/data-structures-pack/master/LICENSE.txt
+[license-url]: https://github.com/D-Naveenz/data-structures-pack/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: images/screenshot.png
