@@ -1,7 +1,6 @@
 from typing import Generic
 
-from data_structures import DSAObj
-from data_structures.generic import generic_class, T
+from dsapack.core import DSAObj, generic_class, T
 
 
 @generic_class

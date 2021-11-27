@@ -1,4 +1,4 @@
-from data_structures.graph import DirectedGraph, Edge
+from dsapack.graph import DirectedGraph, Edge
 
 graph = DirectedGraph([
     Edge("V1", "V2"),

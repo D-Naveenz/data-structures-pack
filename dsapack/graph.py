@@ -1,7 +1,7 @@
 import json
 from typing import Any, Optional
 
-from data_structures.ds_objects import DSAObj
+from .core import DSAObj
 
 
 class Edge:

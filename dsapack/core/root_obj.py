@@ -1,22 +1,19 @@
 import json
-import os
 from abc import ABC, abstractmethod
-from pathlib import Path
 
-base_path = Path(os.path.dirname(__file__))
-with open(base_path.joinpath('config.json'), "r") as info:
-    config: dict = json.load(info)
+from dsapack.config import __version__
+__description__ = "A data structure implemented on 'data structures' python package"
 
 
 class DSAObj(ABC):
-    __version: str = config["pkg_info"]["version"]
+    __version: str = __version__
     _ds_modal = "data structure"  # retrieve the name of the class of the instance self.
     _data_type = "dsa_object"
 
     def __init__(self):
         DSAObj._ds_modal = type(self).__name__
         self._data = None
-        self.description = config["struct_config"]["description"]
+        self.description = __description__
 
     @abstractmethod
     def __len__(self):

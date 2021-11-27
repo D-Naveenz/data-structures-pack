@@ -1,13 +1,4 @@
 <div id="top"></div>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
 
 <!-- PROJECT SHIELDS -->
 <!--
@@ -21,7 +12,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+[![AGPL License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -95,7 +86,7 @@ Of course, no one template will serve all projects since your needs may be diffe
 
 Use the `BLANK_README.md` to get started.
 
-<p style="text-align: right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -108,7 +99,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [Pytest](https://docs.pytest.org/en/6.2.x/)
 * [Mypy](http://mypy-lang.org/)
 
-<p style="text-align: right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -142,7 +133,7 @@ This is an example of how to list things you need to use the software and how to
    const API_KEY = 'ENTER YOUR API';
    ```
 
-<p style="text-align: right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -153,7 +144,7 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 For more examples, please refer to the [Documentation](https://example.com)
 
-<p style="text-align: right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -170,7 +161,7 @@ For more examples, please refer to the [Documentation](https://example.com)
 
 See the [open issues](https://github.com/D-Naveenz/data-structures-pack/issues) for a full list of proposed features (and known issues).
 
-<p style="text-align: right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -188,7 +179,7 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/YourFeature`)
 5. Open a Pull Request
 
-<p style="text-align: right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -208,7 +199,7 @@ Naveen Dharmathunga - [@dharmathunga](https://twitter.com/dharmathunga) - dnd.pr
 
 Project Link: [https://github.com/D-Naveenz/data-structures-pack](https://github.com/D-Naveenz/data-structures-pack)
 
-<p style="text-align: right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -226,22 +217,22 @@ Use this space to list resources you find helpful and would like to give credit 
 * [Font Awesome](https://fontawesome.com)
 * [React Icons](https://react-icons.github.io/react-icons/search)
 
-<p style="text-align: right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/D-Naveenz/data-structures-pack.svg?style=for-the-badge
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/D-Naveenz/data-structures-pack.svg?style=for-the-badge
 [forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/D-Naveenz/data-structures-pack.svg?style=for-the-badge
 [stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/D-Naveenz/data-structures-pack.svg?style=for-the-badge
 [issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/D-Naveenz/data-structures-pack.svg?style=for-the-badge
 [license-url]: https://github.com/D-Naveenz/data-structures-pack/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[linkedin-url]: https://www.linkedin.com/in/dasheewd/
 [product-screenshot]: images/screenshot.png

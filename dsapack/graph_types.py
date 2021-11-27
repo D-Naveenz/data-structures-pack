@@ -1,6 +1,6 @@
 from typing import Optional
 
-from data_structures.graph import GraphController, Edge
+from .graph import GraphController, Edge
 
 
 class DirectedGraph(GraphController):
