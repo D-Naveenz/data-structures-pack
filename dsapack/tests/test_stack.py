@@ -1,4 +1,4 @@
-from dsapack.stack import Stack
+from dsapack import Stack
 
 stack: Stack = Stack[int](5)
 

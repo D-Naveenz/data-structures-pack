@@ -1,17 +1,26 @@
 import json
+from dataclasses import dataclass, field
 from typing import Any, Optional
 
 from .core import DSAObj
 
 
+@dataclass
 class Edge:
-    def __init__(self, vert1, vert2, wgt: float = None):
-        self.l_vertex = vert1
-        self.r_vertex = vert2
-        if wgt is None:
-            self.weight = 1.0
-        else:
-            self.weight = wgt
+    """
+    The data class to represent an edge.
+
+    Attributes:-
+    - l_vertex: left vertex
+    - r_vertex: right vertex
+    - weight: weight of the edge (optional; default 1.0)
+    """
+    l_vertex: str
+    r_vertex: str
+    weight: float = field(default=1.0)
+
+    def is_weighted(self):
+        return self.weight != 1.0
 
 
 class GraphController(DSAObj):

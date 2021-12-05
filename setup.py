@@ -1,5 +1,6 @@
 import os
 
+# noinspection Mypy
 from setuptools import setup
 
 try:

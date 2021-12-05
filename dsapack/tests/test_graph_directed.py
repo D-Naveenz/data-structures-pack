@@ -1,4 +1,4 @@
-from dsapack.graph import DirectedGraph, Edge
+from dsapack import DirectedGraph, Edge
 
 graph = DirectedGraph([
     Edge("V1", "V2"), Edge("V1", "V3"), Edge("V1", "V6"),
