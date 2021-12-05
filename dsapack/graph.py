@@ -1,31 +1,21 @@
 import json
 from typing import Any, Optional
 
-from data_structures.ds_objects import DSAObj
-
-
-class Edge:
-    def __init__(self, vert1, vert2, wgt: float = None):
-        self.l_vertex = vert1
-        self.r_vertex = vert2
-        if wgt is None:
-            self.weight = 1.0
-        else:
-            self.weight = wgt
+from .core import DSAObj
 
 
 class GraphController(DSAObj):
     _data_type = "adjacency_list"
     _data: dict[Any, list[dict]]
 
-    def __init__(self, i_str: Optional[list[Edge]] = None):
+    def __init__(self, i_str: Optional[list[tuple[str, str] | tuple[str, str, float]]] = None):
         super().__init__()
         self.__edge_count = 0
         self._data = {}
 
         if i_str is not None:
             for item in i_str:
-                self.add_edge(item.l_vertex, item.r_vertex, item.weight)
+                self.add_edge(*item)
 
     @property
     def edge_count(self):
@@ -34,10 +24,6 @@ class GraphController(DSAObj):
     @property
     def vertex_count(self):
         return len(self._data)
-
-    @property
-    def adjacency_list(self):
-        return self._data
 
     def __len__(self):
         return self.edge_count
@@ -70,7 +56,7 @@ class GraphController(DSAObj):
         else:
             raise IndexError("Couldn't find the vertex named " + name + ".")
 
-    def add_edge(self, l_vrt, r_vrt, weight):
+    def add_edge(self, l_vrt, r_vrt, weight=1.0):
         # create new vertices if not exist them
         if self._data.get(l_vrt) is None:
             self.add_vertex(l_vrt)
@@ -88,21 +74,21 @@ class GraphController(DSAObj):
                 self.__edge_count -= 1
 
     def trace_paths(self, start, end):
-        # If start or end vertex doesn't exists
+        # If start or end vertex doesn't exist
         if self._data.get(start) is None and self._data.get(end) is None and start == end:
             raise IOError("Invalid input")
 
         return self.__trace_util(start, end, True)
 
     def trace_cycles(self, vertex):
-        # If the vertex doesn't exists
+        # If the vertex doesn't exist
         if self._data.get(vertex) is None:
             raise IOError("Invalid input")
 
         return self.__trace_util(vertex, vertex, True)
 
     def trace_trails(self, start, end):
-        # If start or end vertex doesn't exists
+        # If start or end vertex doesn't exist
         if self._data.get(start) is None and self._data.get(end) is None and start == end:
             raise IOError("Invalid input")
 

@@ -1,18 +1,18 @@
 from typing import Optional
 
-from data_structures.graph import GraphController, Edge
+from .graph import GraphController
 
 
 class DirectedGraph(GraphController):
 
-    def __init__(self, i_str: Optional[list[Edge]] = None):
+    def __init__(self, i_str: Optional[list[tuple[str, str] | tuple[str, str, float]]] = None):
         super().__init__(i_str)
 
     def is_universal_sink(self, vertex):
         # checking there are adjacent vertices from the given vertex
         if len(self._data.get(vertex)) == 0:
             count = 0
-            for adj_list in self.adjacency_list.values():
+            for adj_list in self.store.values():
                 for adj in adj_list:
                     if adj.get("adjacent") is vertex:
                         count += 1
@@ -24,10 +24,10 @@ class DirectedGraph(GraphController):
 
 class UndirectedGraph(GraphController):
 
-    def __init__(self, i_str: Optional[list[Edge]] = None):
+    def __init__(self, i_str: Optional[list[tuple[str, str] | tuple[str, str, float]]] = None):
         super().__init__(i_str)
 
-    def add_edge(self, l_vrt, r_vrt, weight):
+    def add_edge(self, l_vrt, r_vrt, weight=1.0):
         # Call base function
         super().add_edge(l_vrt, r_vrt, weight)
         # Both verticals should behave adjacent to each other

@@ -1,7 +1,6 @@
-from typing import Generic
+from typing import Generic, Optional
 
-from data_structures import DSAObj
-from data_structures.generic import generic_class, T
+from dsapack.core import DSAObj, generic_class, T
 
 
 @generic_class
@@ -9,10 +8,14 @@ class Stack(Generic[T], DSAObj):
     _data_type = "array"
     _data: list[T]
 
-    def __init__(self, length=1):
+    def __init__(self, length=1, i_str: Optional[list[T]] = None):
         super().__init__()
         self.__length = length
         self._data = []
+
+        if i_str is not None:
+            for item in i_str:
+                self.push(item)
 
     @property
     def top(self):

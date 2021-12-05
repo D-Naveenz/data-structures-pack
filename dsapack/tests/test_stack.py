@@ -1,18 +1,15 @@
-from data_structures.stack import Stack
+from dsapack import Stack
 
-stack: Stack = Stack[int](5)
+stack: Stack = Stack[int](5, [
+    67, 56, 12, 2, 99
+])
 
 
 def test_is_empty():
-    assert stack.is_empty
+    assert stack.is_empty is False
 
 
-def test_push():
-    stack.push(67)
-    stack.push(56)
-    stack.push(12)
-    stack.push(2)
-    stack.push(99)
+def test_length():
     assert len(stack) == 5
 
 
@@ -39,9 +36,7 @@ def test_top():
 
 
 def test_deserialize():
-    # serializing stack object into a string
-    serial_str = str(stack)
     # creating temporary stack with deserializing the string
-    tmp_stack = Stack.deserialize(serial_str)
+    tmp_stack = Stack.deserialize(str(stack))
     # compare the both dictionary outputs
-    assert stack.__dict__() == tmp_stack.__dict__()
+    assert stack == tmp_stack

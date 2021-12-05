@@ -1,22 +1,27 @@
 import json
-import os
 from abc import ABC, abstractmethod
-from pathlib import Path
 
-base_path = Path(os.path.dirname(__file__))
-with open(base_path.joinpath('config.json'), "r") as info:
-    config: dict = json.load(info)
+from dsapack.config import __version__
+__description__ = "A data structure implemented on 'data structures' python package"
 
 
 class DSAObj(ABC):
-    __version: str = config["pkg_info"]["version"]
+    __version: str = __version__
     _ds_modal = "data structure"  # retrieve the name of the class of the instance self.
     _data_type = "dsa_object"
 
     def __init__(self):
         DSAObj._ds_modal = type(self).__name__
         self._data = None
-        self.description = config["struct_config"]["description"]
+        self.description = __description__
+
+    @property
+    def modal(self):
+        return self._ds_modal
+
+    @property
+    def store(self):
+        return self._data
 
     @abstractmethod
     def __len__(self):
@@ -25,13 +30,22 @@ class DSAObj(ABC):
     def __str__(self):
         return json.dumps(self.serialize())
 
-    def __dict__(self):
+    def __repr__(self):
         return self.serialize()
+
+    def __eq__(self, other):
+        if self.modal == other.modal and self.store == other.store:
+            return True
+        return False
 
     def display(self):
         print(json.dumps(self._data, indent=4))
 
     def serialize(self):
+        """
+        Serialize the object and returns as a dictionary
+        :return: serialized object
+        """
         struct = {
             "ds_modal": self._ds_modal,
             "version": self.__version,
@@ -43,6 +57,11 @@ class DSAObj(ABC):
     @classmethod
     @abstractmethod
     def deserialize(cls, i_stream: str):
+        """
+        Deserialize the string and into a new object
+        :param i_stream: string that contains serialized data
+        :return: new instance
+        """
         struct: dict = json.loads(i_stream)
         modal = struct["ds_modal"]
         version = struct["version"]
