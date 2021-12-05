@@ -15,6 +15,14 @@ class DSAObj(ABC):
         self._data = None
         self.description = __description__
 
+    @property
+    def modal(self):
+        return self._ds_modal
+
+    @property
+    def store(self):
+        return self._data
+
     @abstractmethod
     def __len__(self):
         pass
@@ -22,13 +30,22 @@ class DSAObj(ABC):
     def __str__(self):
         return json.dumps(self.serialize())
 
-    def __dict__(self):
+    def __repr__(self):
         return self.serialize()
+
+    def __eq__(self, other):
+        if self.modal == other.modal and self.store == other.store:
+            return True
+        return False
 
     def display(self):
         print(json.dumps(self._data, indent=4))
 
     def serialize(self):
+        """
+        Serialize the object and returns as a dictionary
+        :return: serialized object
+        """
         struct = {
             "ds_modal": self._ds_modal,
             "version": self.__version,
@@ -40,6 +57,11 @@ class DSAObj(ABC):
     @classmethod
     @abstractmethod
     def deserialize(cls, i_stream: str):
+        """
+        Deserialize the string and into a new object
+        :param i_stream: string that contains serialized data
+        :return: new instance
+        """
         struct: dict = json.loads(i_stream)
         modal = struct["ds_modal"]
         version = struct["version"]

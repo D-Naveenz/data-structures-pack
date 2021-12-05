@@ -1,4 +1,3 @@
-from .graph import Edge
 from .graph_types import DirectedGraph, UndirectedGraph
 from .stack import Stack
 

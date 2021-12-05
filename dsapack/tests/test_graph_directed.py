@@ -1,13 +1,13 @@
-from dsapack import DirectedGraph, Edge
+from dsapack import DirectedGraph
 
 graph = DirectedGraph([
-    Edge("V1", "V2"), Edge("V1", "V3"), Edge("V1", "V6"),
-    Edge("V2", "V3"), Edge("V2", "V4"),
-    Edge("V4", "V3"),
-    Edge("V5", "V3"),
-    Edge("V6", "V3"), Edge("V2", "V8"),
-    Edge("V7", "V1"), Edge("V7", "V3"),
-    Edge("V8", "V3"), Edge("V8", "V7")
+    ("V1", "V2"), ("V1", "V3"), ("V1", "V6"),
+    ("V2", "V3"), ("V2", "V4"),
+    ("V4", "V3"),
+    ("V5", "V3"),
+    ("V6", "V3"), ("V2", "V8"),
+    ("V7", "V1"), ("V7", "V3"),
+    ("V8", "V3"), ("V8", "V7")
 ])
 
 

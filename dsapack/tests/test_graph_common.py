@@ -1,10 +1,10 @@
-from dsapack import DirectedGraph, Edge
+from dsapack import DirectedGraph
 
 graph = DirectedGraph([
-    Edge("V1", "V2"),
-    Edge("V3", "V2"), Edge("V3", "V4"),
-    Edge("V4", "V2"), Edge("V4", "V5"),
-    Edge("V5", "V2"), Edge("V5", "V1")
+    ("V1", "V2"),
+    ("V3", "V2"), ("V3", "V4"),
+    ("V4", "V2"), ("V4", "V5"),
+    ("V5", "V2"), ("V5", "V1")
 ])
 
 
@@ -21,12 +21,10 @@ def test_edge_count():
 
 
 def test_deserialize():
-    # serializing graph object into a string
-    serial_str = str(graph)
     # creating temporary graph with deserializing the string
-    tmp_graph = DirectedGraph.deserialize(serial_str)
+    tmp_graph = DirectedGraph.deserialize(str(graph))
     # compare the both dictionary outputs
-    assert graph.__dict__() == tmp_graph.__dict__()
+    assert graph == tmp_graph
 
 
 def test_trace_paths():
