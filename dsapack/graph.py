@@ -8,13 +8,13 @@ class GraphController(DSAObj):
     _data_type = "adjacency_list"
     _data: dict[Any, list[dict]]
 
-    def __init__(self, i_str: Optional[list[tuple[str, str] | tuple[str, str, float]]] = None):
+    def __init__(self, i_list: Optional[list[tuple[str, str] | tuple[str, str, float]]] = None):
         super().__init__()
         self.__edge_count = 0
         self._data = {}
 
-        if i_str is not None:
-            for item in i_str:
+        if i_list is not None:
+            for item in i_list:
                 self.add_edge(*item)
 
     @property
@@ -29,15 +29,6 @@ class GraphController(DSAObj):
         return self.edge_count
 
     # Public functions
-    @classmethod
-    def deserialize(cls, i_stream: str):
-        super().deserialize(i_stream)
-        struct: dict = json.loads(i_stream)
-
-        new = cls()
-        new._data = struct[cls._data_type]
-        return new
-
     def add_vertex(self, name):
         if name not in self._data:
             self._data[name] = []
@@ -100,8 +91,26 @@ class GraphController(DSAObj):
             raise IOError("Invalid input")
 
         return self.__trace_util(vertex, vertex, False)
-
     # Public functions
+
+    # Protected functions
+    @DSAObj.serializer
+    def _serialize_handler(self):
+        struct = {
+            "edge_count": self.__edge_count
+        }
+        return struct
+
+    @classmethod
+    @DSAObj.deserializer
+    def _deserialize_handler(cls, i_stream: str):
+        struct: dict = json.loads(i_stream)
+
+        new = cls()
+        new.__edge_count = struct["edge_count"]
+        new._data = struct[cls._data_type]
+        return new
+    # Protected functions
 
     # Private functions
     def __trace_util(self, start, end, is_path) -> Optional[list[list]]:

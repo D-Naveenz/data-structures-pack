@@ -7,10 +7,21 @@ def get_version() -> str:
     with open(os.path.join(here, "__init__.py")) as fp:
         for line in fp.read().splitlines():
             if line.startswith("__version__"):
-                # __version__ = "0.9"
+                # __version__ = "0.1.0"
                 delim = '"' if '"' in line else "'"
                 return line.split(delim)[1]
         raise RuntimeError("Unable to find version string.")
 
 
 __version__ = get_version()
+__version_min__ = "0.12"
+
+
+def validate_version(version: str) -> bool:
+    _current = float(version)
+    _min = float(__version_min__)
+
+    if _current >= _min:
+        return True
+    else:
+        return False
