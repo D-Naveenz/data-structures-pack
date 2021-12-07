@@ -29,6 +29,8 @@
 
 ### Added or Changed
 - Added `Queue` Data structure
+- Renamed `DSAObj` base class to `DSObject`
+- Created `DSGeneric` metaclass with referring `generic_class` decorator
 
 ### Removed
-- Not yet
+- `generic_class` decorator
