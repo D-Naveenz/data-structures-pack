@@ -1,56 +1,56 @@
 import json
 from typing import Generic, Optional, Any
+from collections import deque
 
 from dsapack.core import *
 
 
 @generic_class
-class Stack(Generic[T], DSAObj):
-    _data_type = "array"
-    _data: list[T]
+class Queue(Generic[T], DSAObj):
+    _data_type = "list"
+    _data: deque[T]
 
     def __init__(self, length=1, i_list: Optional[list[T]] = None):
         super().__init__()
         self.__length = length
-        self._data = []
+        self._data = deque(maxlen=length)
 
         if i_list is not None:
             for item in i_list:
-                self.push(item)
+                self.enqueue(item)
 
     @property
-    def top(self):
+    def rear(self):
         return len(self._data) - 1
 
     @property
     def is_empty(self):
-        return self.top == -1
+        return len(self._data) == 0
 
     @property
     def is_full(self):
-        return self.top == self.__length - 1
+        return len(self._data) == self.__length
 
     def __len__(self):
-        return self.top + 1
+        return self.__length
 
-    def push(self, data: T):
-        if not self.is_full:
+    def enqueue(self, data: T):
+        try:
             self._data.append(data)
-            return True
-        else:
-            return False
+        except IndexError:
+            print("Error - Queue is overflowing")
 
-    def pop(self):
-        if not self.is_empty:
-            return self._data.pop()
-        else:
-            return None
+    def deque(self):
+        try:
+            return self._data.popleft()
+        except IndexError:
+            print("Error - Queue is empty!")
 
     @DSAObj.serializer
     def _serialize_handler(self) -> dict[str, Any]:
         struct = {
             "length": self.__length,
-            self._data_type: self._data
+            self._data_type: list(self._data)
         }
         return struct
 
@@ -59,5 +59,5 @@ class Stack(Generic[T], DSAObj):
     def _deserialize_handler(cls, i_stream: str):
         struct: dict = json.loads(i_stream)
 
-        new = cls.create_class(struct["ds_modal"], struct["length"], list(struct["array"]))
+        new = cls.create_class(struct["ds_modal"], struct["length"], list(struct["list"]))
         return new

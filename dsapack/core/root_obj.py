@@ -34,8 +34,6 @@ class DSAObj(ABC):
             for key, value in add.items():
                 struct[key] = value
 
-            # adding the '_data' section
-            struct[self._data_type] = self._data
             return struct
 
         return serialize
@@ -97,7 +95,10 @@ class DSAObj(ABC):
         return new
 
     def display(self):
-        print(json.dumps(self._data, indent=4))
+        try:
+            print(json.dumps(self._data, indent=4))
+        except TypeError:
+            print(json.dumps(list(self._data), indent=4))
 
     @abstractmethod
     def _serialize_handler(self) -> dict[str, Any]:

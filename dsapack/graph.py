@@ -97,7 +97,8 @@ class GraphController(DSAObj):
     @DSAObj.serializer
     def _serialize_handler(self):
         struct = {
-            "edge_count": self.__edge_count
+            "edge_count": self.__edge_count,
+            self._data_type: self._data
         }
         return struct
 
