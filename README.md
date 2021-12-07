@@ -32,7 +32,7 @@
     <a href="https://github.com/D-Naveenz/data-structures-pack"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="#">View Demo</a>
+    <a href="CHANGELOG.md">View Changelog</a>
     ·
     <a href="https://github.com/D-Naveenz/data-structures-pack/issues">Report Bug</a>
     ·

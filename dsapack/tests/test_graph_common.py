@@ -22,7 +22,7 @@ def test_edge_count():
 
 def test_deserialize():
     # creating temporary graph with deserializing the string
-    tmp_graph = DirectedGraph.deserialize(str(graph))
+    tmp_graph = DirectedGraph() << str(graph)
     # compare the both dictionary outputs
     assert graph == tmp_graph
 

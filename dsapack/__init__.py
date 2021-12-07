@@ -1,4 +1,6 @@
-from .graph_types import DirectedGraph, UndirectedGraph
+from .graph_directed import DirectedGraph
+from .graph_undirected import UndirectedGraph
 from .stack import Stack
+from .queue import Queue
 
-__version__ = '0.2.0'
+__version__ = '0.20'

@@ -1,7 +1,7 @@
 # Changelog
 
 
-## v0.1.2
+## v0.12
 
 ### Added or Changed
 - Added DSA (base) Class
@@ -11,7 +11,7 @@
 - Restructured the package
 
 
-## v0.1.8
+## v0.18
 
 ### Added or Changed
 - Various bugs fixed on Stack and Graph data structures
@@ -25,7 +25,7 @@
 - Unwanted dependencies
 
 
-## v0.2.0
+## v0.20
 
 ### Added or Changed
 - Added `Queue` Data structure

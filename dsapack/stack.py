@@ -1,6 +1,6 @@
-from typing import Generic, Optional
+from typing import Generic, Optional, Any
 
-from dsapack.core import DSAObj, generic_class, T
+from dsapack.core import *
 
 
 @generic_class
@@ -32,13 +32,6 @@ class Stack(Generic[T], DSAObj):
     def __len__(self):
         return self.top + 1
 
-    def __dict__(self):
-        return self.serialize()
-
-    @classmethod
-    def deserialize(cls, i_stream: str):
-        super().deserialize(i_stream)
-
     def push(self, data: T):
         if not self.is_full:
             self._data.append(data)
@@ -51,3 +44,18 @@ class Stack(Generic[T], DSAObj):
             return self._data.pop()
         else:
             return None
+
+    @DSAObj.serializer
+    def _serialize_handler(self) -> dict[str, Any]:
+        struct = {
+            "length": self.__length
+        }
+        return struct
+
+    @classmethod
+    @DSAObj.deserializer
+    def _deserialize_handler(cls, i_stream: str):
+        struct: dict = json.loads(i_stream)
+
+        new = cls.create_class(struct["ds_modal"], struct["length"], list(struct["array"]))
+        return new

@@ -1,15 +1,35 @@
-import json
+import re
 from typing import get_args, TypeVar
 
 T = TypeVar("T")
 
 
-def gettype(name: str):
-    """it looks into builtin types only"""
-    t = getattr(__builtins__, name)
-    if isinstance(t, type):
-        return t
-    raise ValueError(name)
+def gettype(name: str) -> type:
+    """
+    Lexical cast from a string to a type.
+    It's working for all built-in types.
+    :param name: type name
+    :return: type
+    """
+    from collections import deque
+    # q is short for "queue", here
+    q = deque([object])
+    while q:
+        t = q.popleft()
+        if t.__name__ == name:
+            return t
+
+        try:
+            # Keep looking!
+            q.extend(t.__subclasses__())
+        except TypeError:
+            # type.__subclasses__ needs an argument, for whatever reason.
+            if t is type:
+                continue
+            else:
+                raise
+    else:
+        raise ValueError('No such type: %r' % name)
 
 
 def generic_class(cls):
@@ -36,18 +56,12 @@ def generic_class(cls):
                 self.__generic_type__ = get_args(self.__orig_class__)[0]
                 self._ds_modal += '[' + get_args(self.__orig_class__)[0].__name__ + ']'
 
-        def __dict__(self):
-            return self.serialize()
-
         @classmethod
-        def deserialize(cls, i_stream: str):
-            super().deserialize(i_stream)
-            struct: dict = json.loads(i_stream)
-            # gen_type = re.findall(r'(?<=\[)[a-zA-Z]+', struct["ds_modal"])
-            # gen_type = gettype(gen_type[0])
-            new = cls()
-            new._ds_modal = struct["ds_modal"]
-            new._data = struct[cls._data_type]
+        def create_class(cls, ds_modal, *args, **kwargs):
+            gen_type = re.findall(r'(?<=\[)[a-zA-Z]+', ds_modal)
+            gen_type = gettype(gen_type[0])
+
+            new = cls[gen_type](*args, **kwargs)
             return new
 
     GenericDS.__orig_bases__ = orig_bases

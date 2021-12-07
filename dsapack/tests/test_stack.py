@@ -37,6 +37,6 @@ def test_top():
 
 def test_deserialize():
     # creating temporary stack with deserializing the string
-    tmp_stack = Stack.deserialize(str(stack))
+    tmp_stack = Stack() << str(stack)
     # compare the both dictionary outputs
     assert stack == tmp_stack

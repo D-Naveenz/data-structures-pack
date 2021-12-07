@@ -22,7 +22,7 @@ def test_display():
 def test_is_universal_sink():
     # calculating how many universal sinks in this graph
     count = 0
-    for vertex in graph.adjacency_list.keys():
+    for vertex in graph.store.keys():
         if graph.is_universal_sink(vertex):
             count += 1
 
