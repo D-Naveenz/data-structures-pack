@@ -1,2 +1,2 @@
-from .root_obj import DSAObj
-from .generic import *
+from .root_object import DSObject
+from .root_generics import DSGeneric, T

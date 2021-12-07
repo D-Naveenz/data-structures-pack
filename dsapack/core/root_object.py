@@ -7,7 +7,7 @@ from dsapack.config import __version__, validate_version
 __description__ = "A data structure implemented on 'data structures' python package"
 
 
-class DSAObj(ABC):
+class DSObject(ABC):
     __version: str = __version__
     _ds_modal = "data structure"  # retrieve the name of the class of the instance self.
     _data_type = "dsa_object"
@@ -63,7 +63,7 @@ class DSAObj(ABC):
     # decorators
 
     def __init__(self):
-        DSAObj._ds_modal = type(self).__name__
+        DSObject._ds_modal = type(self).__name__
         self._data = None
         self.description = __description__
 
@@ -106,7 +106,7 @@ class DSAObj(ABC):
         Serialize the object and returns as a dictionary
         :return: serialized object
         """
-        struct = dict()
+        struct: dict[str, Any] = {}
         return struct
 
     @classmethod

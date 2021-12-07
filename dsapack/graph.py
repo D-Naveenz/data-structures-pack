@@ -1,10 +1,10 @@
 import json
 from typing import Any, Optional
 
-from .core import DSAObj
+from .core import DSObject
 
 
-class GraphController(DSAObj):
+class GraphController(DSObject):
     _data_type = "adjacency_list"
     _data: dict[Any, list[dict]]
 
@@ -86,7 +86,7 @@ class GraphController(DSAObj):
         return self.__trace_util(start, end, False)
 
     def trace_circuit(self, vertex):
-        # If the vertex doesn't exists
+        # If the vertex doesn't exist
         if self._data.get(vertex) is None:
             raise IOError("Invalid input")
 
@@ -94,7 +94,7 @@ class GraphController(DSAObj):
     # Public functions
 
     # Protected functions
-    @DSAObj.serializer
+    @DSObject.serializer
     def _serialize_handler(self):
         struct = {
             "edge_count": self.__edge_count,
@@ -103,7 +103,7 @@ class GraphController(DSAObj):
         return struct
 
     @classmethod
-    @DSAObj.deserializer
+    @DSObject.deserializer
     def _deserialize_handler(cls, i_stream: str):
         struct: dict = json.loads(i_stream)
 
@@ -155,7 +155,7 @@ class GraphController(DSAObj):
         kwargs["recursion"] += 1
 
         # base case 1
-        # If its not the first iteration and both start and end vertices are the same
+        # If it's not the first iteration and both start and end vertices are the same
         if start == end and kwargs["recursion"] > 0:
             kwargs["paths"].append(list(kwargs["current"]))
         else:
@@ -176,7 +176,7 @@ class GraphController(DSAObj):
         kwargs["recursion"] += 1
 
         # base case 1
-        # If its not the first iteration and both start and end vertices are the same
+        # If it's not the first iteration and both start and end vertices are the same
         if start == end and kwargs["recursion"] > 0:
             kwargs["paths"].append(list(kwargs["current"]))
         else:

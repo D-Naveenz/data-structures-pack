@@ -1,12 +1,11 @@
 import json
-from typing import Generic, Optional, Any
 from collections import deque
+from typing import Any, Generic, Optional
 
 from dsapack.core import *
 
 
-@generic_class
-class Queue(Generic[T], DSAObj):
+class Queue(DSGeneric[T], Generic[T]):
     _data_type = "list"
     _data: deque[T]
 
@@ -46,7 +45,7 @@ class Queue(Generic[T], DSAObj):
         except IndexError:
             print("Error - Queue is empty!")
 
-    @DSAObj.serializer
+    @DSObject.serializer
     def _serialize_handler(self) -> dict[str, Any]:
         struct = {
             "length": self.__length,
@@ -55,7 +54,7 @@ class Queue(Generic[T], DSAObj):
         return struct
 
     @classmethod
-    @DSAObj.deserializer
+    @DSObject.deserializer
     def _deserialize_handler(cls, i_stream: str):
         struct: dict = json.loads(i_stream)
 

@@ -4,8 +4,7 @@ from typing import Generic, Optional, Any
 from dsapack.core import *
 
 
-@generic_class
-class Stack(Generic[T], DSAObj):
+class Stack(DSGeneric[T], Generic[T]):
     _data_type = "array"
     _data: list[T]
 
@@ -46,7 +45,7 @@ class Stack(Generic[T], DSAObj):
         else:
             return None
 
-    @DSAObj.serializer
+    @DSObject.serializer
     def _serialize_handler(self) -> dict[str, Any]:
         struct = {
             "length": self.__length,
@@ -55,7 +54,7 @@ class Stack(Generic[T], DSAObj):
         return struct
 
     @classmethod
-    @DSAObj.deserializer
+    @DSObject.deserializer
     def _deserialize_handler(cls, i_stream: str):
         struct: dict = json.loads(i_stream)
 

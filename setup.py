@@ -1,9 +1,8 @@
 import os
 
-# noinspection Mypy
 from setuptools import setup
 
-try:
+try:  # type: ignore
     import pypandoc
 
     long_description = pypandoc.convert_file('README.md', 'rst')
@@ -21,7 +20,7 @@ def read(rel_path: str) -> str:
 def get_version(rel_path: str) -> str:
     for line in read(rel_path).splitlines():
         if line.startswith("__version__"):
-            # __version__ = "0.9"
+            # __version__ = "0.90"
             delim = '"' if '"' in line else "'"
             return line.split(delim)[1]
     raise RuntimeError("Unable to find version string.")
@@ -29,8 +28,8 @@ def get_version(rel_path: str) -> str:
 
 setup(
     name='dsapack',
-    version=get_version("dsapack/config.py"),
-    packages=['dsapack', 'dsapack.core'],
+    version=get_version("dsapack/__init__.py"),
+    packages=['dsapack', 'dsapack.core', 'dsapack.tests'],
     project_urls={
         "Documentation": "https://pip.pypa.io",
         "Source": "https://github.com/D-Naveenz/data-structures-pack/",
