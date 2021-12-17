@@ -2,7 +2,8 @@ import json
 from collections import deque
 from typing import Any, Generic, Optional
 
-from dsapack.core import *
+from . import DSGeneric, T
+from ..__base__ import DSObject
 
 
 class Queue(DSGeneric[T], Generic[T]):

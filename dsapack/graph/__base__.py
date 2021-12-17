@@ -1,7 +1,7 @@
 import json
 from typing import Any, Optional
 
-from .core import DSObject
+from ..__base__ import DSObject
 
 
 class GraphController(DSObject):

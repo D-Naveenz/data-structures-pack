@@ -38,6 +38,7 @@ setup(
     license='AGPL-3.0',
     author='Naveen Dharmathunga',
     author_email='dnd.pro@outlook.com',
-    description='Data structures package that commonly using in programming',
+    description='A Python package that integrates functional-rich data structures that are most useful '
+                'for programming.',
     long_description=long_description
 )

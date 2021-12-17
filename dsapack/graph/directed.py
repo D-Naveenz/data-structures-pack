@@ -1,6 +1,6 @@
 from typing import Optional
 
-from .graph import GraphController
+from . import GraphController
 
 
 class DirectedGraph(GraphController):

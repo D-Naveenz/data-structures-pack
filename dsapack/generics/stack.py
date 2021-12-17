@@ -1,7 +1,8 @@
 import json
 from typing import Generic, Optional, Any
 
-from dsapack.core import *
+from . import DSGeneric, T
+from ..__base__ import DSObject
 
 
 class Stack(DSGeneric[T], Generic[T]):

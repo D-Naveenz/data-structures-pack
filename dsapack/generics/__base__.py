@@ -1,9 +1,10 @@
 import re
 from abc import ABC
-from typing import get_args, TypeVar, Generic, Optional
+from typing import get_args, Optional, Generic, TypeVar
 
-from dsapack.core import DSObject
+from ..__base__ import DSObject
 
+# Type variable that generic type data structures can use
 T = TypeVar("T")
 
 
