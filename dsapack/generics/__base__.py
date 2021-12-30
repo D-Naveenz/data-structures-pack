@@ -18,6 +18,9 @@ class DSGeneric(DSObject, Generic[T], ABC):
     """
     __generic_type__: Optional[type] = None
 
+    def __init__(self):
+        super().__init__()
+
     def __setattr__(self, name, value):
         object.__setattr__(self, name, value)
         if name == "__orig_class__":

@@ -1,12 +1,12 @@
 import json
-from typing import Any, Optional
+from typing import Optional
 
 from ..__base__ import DSObject
 
 
 class GraphController(DSObject):
+    _data: dict[str, list[dict]]
     _data_type = "adjacency_list"
-    _data: dict[Any, list[dict]]
 
     def __init__(self, i_list: Optional[list[tuple[str, str] | tuple[str, str, float]]] = None):
         super().__init__()
@@ -91,6 +91,7 @@ class GraphController(DSObject):
             raise IOError("Invalid input")
 
         return self.__trace_util(vertex, vertex, False)
+
     # Public functions
 
     # Protected functions
@@ -111,6 +112,7 @@ class GraphController(DSObject):
         new.__edge_count = struct["edge_count"]
         new._data = struct[cls._data_type]
         return new
+
     # Protected functions
 
     # Private functions
