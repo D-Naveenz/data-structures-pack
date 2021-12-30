@@ -1,15 +1,24 @@
 import json
+from enum import Enum, unique
 from typing import Optional, Any, TypeVar
 
 
 class TreeNode:
 
     def __init__(self, key: Any, value: Optional[dict] = None):
-        self.key = key
-        self.value = value
+        self.__key = key
+        self._value = {} if not value else value
         self.parent: Optional[TreeNode] = None  # Parent of this node for easier rotations
         self.left: Optional[TreeNode] = None
         self.right: Optional[TreeNode] = None
+
+    @property
+    def key(self):
+        return self.__key
+
+    @property
+    def value(self):
+        return self._value
 
     @property
     def is_root(self) -> bool:
@@ -46,14 +55,14 @@ class TreeNode:
     def __repr__(self):
         struct: dict[str, Any] = {
             'key': self.key,
-            'value': self.value,
+            'value': self._value,
             'left-child': None if not self.left else self.left.key,
             'right-child': None if not self.right else self.right.key
         }
         return json.dumps(struct)
 
     def get_root(self):
-        def find_root(_self: TreeNode):
+        def find_root(_self) -> TreeNode:
             return _self if _self.is_root else find_root(_self.parent)
 
         return find_root(self)
@@ -66,7 +75,57 @@ class AVLTreeNode(TreeNode):
         self.parent: Optional[AVLTreeNode] = None  # Parent of this node for easier rotations
         self.left: Optional[AVLTreeNode] = None
         self.right: Optional[AVLTreeNode] = None
-        self.bf = bf  # Balance factor of current node
+        self.bf = bf
+
+    @property
+    def bf(self) -> int:
+        """
+        Getter method of the balance factor of current node
+        :return: balance factor value
+        """
+        return self._value['balance']
+
+    @bf.setter
+    def bf(self, value: int):
+        """
+        Setter method of the balance factor of current node
+        :param value: bf as an integer
+        :return: none
+        """
+        self._value['balance'] = value
 
 
-TN = TypeVar('TN', TreeNode, AVLTreeNode)
+@unique
+class Color(Enum):
+    BLACK = 0
+    RED = 1
+
+
+class RBTreeNode(TreeNode):
+
+    def __init__(self, key: Any, value: Optional[dict] = None, color=Color.RED):
+        super().__init__(key, value)
+        self.parent: Optional[RBTreeNode] = None  # Parent of this node for easier rotations
+        self.left: Optional[RBTreeNode] = None
+        self.right: Optional[RBTreeNode] = None
+        self.color = color
+
+    @property
+    def color(self) -> Color:
+        """
+        Getter method of the color of current node
+        :return: color of the node
+        """
+        return self._value['color']
+
+    @color.setter
+    def color(self, value: Color):
+        """
+        Setter method of the color of current node
+        :param value: color as an enumeration
+        :return: none
+        """
+        self._value['color'] = value
+
+
+TN = TypeVar('TN', TreeNode, AVLTreeNode, RBTreeNode)

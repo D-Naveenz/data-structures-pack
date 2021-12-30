@@ -103,7 +103,7 @@ def print_level_order(root):
         # Get all neighbors/adjacent nodes/vertices of the dequeued vertex and enqueue if not visited and mark it
 
         # In standard BFS, we push vertices adjacent to a node, which all exist in the adjacency list representation
-        # Here, children may be non-existent so we must push only those children that exist
+        # Here, children may be non-existent, so we must push only those children that exist
         if removed.left is not None:
             bfs_queue.put(removed.left)
         if removed.right is not None:

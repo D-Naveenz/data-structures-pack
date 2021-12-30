@@ -193,7 +193,7 @@ class DSTree(DSGeneric[TN], Generic[TN]):
                 else:
                     inorder_successor = get_min_node(parent.right)
                     # copy  successor into current
-                    parent.key, parent.value = inorder_successor.key, inorder_successor.value
+                    parent.key, parent._value = inorder_successor.key, inorder_successor._value
                     # delete inorder successor
                     new_root_successor = delete_helper(parent.right, inorder_successor.key)
                     parent.right = new_root_successor
